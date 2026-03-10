@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Template
+
+A minimal starter built on the Next.js App Router with TypeScript, Tailwind CSS v4, shadcn/ui, dark mode support, and Clerk authentication.
+
+## Current Stack
+
+- Next.js 16
+- React 19
+- TypeScript 5
+- Tailwind CSS 4
+- shadcn/ui with the `base-nova` style
+- `next-themes` for light, dark, and system themes
+- Clerk for authentication
+- ESLint and Prettier for code quality and formatting
+
+## Included Setup
+
+- App Router project structure with Geist fonts configured in `app/layout.tsx`
+- Global design tokens and theme variables in `app/globals.css`
+- shadcn/ui primitives including `Button`, `DropdownMenu`, and `Spinner`
+- Sticky header with a theme switcher and auth controls
+- Clerk middleware in `proxy.ts` for app and API requests
+- Shared `cn()` utility in `lib/utils.ts`
 
 ## Getting Started
 
-First, run the development server:
+This repository is currently managed with `pnpm`.
+
+1. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create `.env` and add your Clerk keys:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+CLERK_SECRET_KEY=your_secret_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Start the development server:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `pnpm dev` starts the local development server
+- `pnpm build` creates a production build
+- `pnpm start` runs the production build
+- `pnpm prelint` formats the project with Prettier
+- `pnpm lint` runs ESLint
 
-## Deploy on Vercel
+## Prettier Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Prettier is configured in `.prettierrc` with the following behavior:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `semi: false`
+- `prettier-plugin-organize-imports` sorts and groups imports
+- `prettier-plugin-tailwindcss` sorts Tailwind utility classes
+- `tailwindStylesheet` points to `app/globals.css`
+- `tailwindFunctions` includes `cn` and `cva`
+
+## Notes
+
+- `.env*` files and `.clerk/` are ignored by Git.
+- The home page is intentionally minimal so the repository can serve as a reusable starter template.
